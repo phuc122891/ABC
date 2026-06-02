@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cẩm Nang Toàn Tập Về Loài Ghẹ Biển</title>
+    <style>
+        /* --- Cấu hình CSS chung --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #334155;
+            line-height: 1.7;
+        }
+
+        /* --- Thanh điều hướng (Navbar) --- */
+        nav {
+            background-color: #ffffff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ea580c;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #475569;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ea580c;
+        }
+
+        /* --- Header Banner --- */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://upload.wikimedia.org/wikipedia/commons/1/1a/Blue_swimmer_crab_at_the_fish_market.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 6rem 1rem;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* --- Khung nội dung chính --- */
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            margin-bottom: 3rem;
+        }
+
+        h2.section-title {
+            color: #1e293b;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        h2.section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 4px;
+            background-color: #ea580c;
+            border-radius: 2px;
+        }
+
+        /* --- Grid danh sách các loại ghẹ --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Định dạng cho ảnh trong thẻ card */
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover; /* Giúp ảnh không bị méo */
+            display: block;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .card-body h3 {
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+        }
+
+        /* --- Bảng so sánh --- */
+        .table-responsive {
+            overflow-x: auto;
+            margin-top: 1.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background-color: #f1f5f9;
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background-color: #f8fafc;
+        }
+
+        /* --- Mẹo chọn ghẹ (Flexbox) --- */
+        .tips-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .tip-item {
+            display: flex;
+            background: #fff7ed;
+            padding: 1.5rem;
+            border-left: 5px solid #f97316;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .tip-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 2rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        /* --- Responsive cho Mobile --- */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            header h1 { font-size: 2.2rem; }
+            section { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">🦀 Hải Sản Kỳ Thú</a>
+            <ul class="nav-links">
+                <li><a href="#tong-quan">Tổng Quan</a></li>
+                <li><a href="#phan-loai">Phân Loại</a></li>
+                <li><a href="#so-sanh">So Sánh</a></li>
+                <li><a href="#meo-chon">Mẹo Chọn Ghẹ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Thế Giới Loài Ghẹ Biển</h1>
+        <p>Cung cấp kiến thức chuyên sâu về đặc điểm sinh học, cách phân biệt các loại ghẹ và bí quyết lựa chọn hải sản luôn tươi ngon, chắc thịt.</p>
+    </header>
+
+    <div class="container">
+        
+        <section id="tong-quan">
+            <h2 class="section-title">1. Tổng Quan Sinh Học</h2>
+            <p><strong>Ghẹ (mã danh khoa học: Portunidae)</strong> là một họ cua bơi bao gồm nhiều loài hải sản có giá trị thương mại cao. Khác với cua biển thông thường sống ở vùng bùn nước lợ, ghẹ chủ yếu ưa thích vùng biển xa bờ, nước trong và đáy cát hoặc rạn san hô.</p>
+            <p style="margin-top: 1rem;">Về mặt dinh dưỡng, thịt ghẹ chứa hàm lượng lớn <strong>Protein, Omega-3, Canxi, kẽm và Vitamin nhóm B</strong>. Đây là nguồn bổ sung dưỡng chất tuyệt vời cho hệ tim mạch và xương khớp, đồng thời chứa rất ít chất béo bão hòa.</p>
+        </section>
+
+        <section id="phan-loai">
+            <h2 class="section-title">2. Phân Loại Các Loài Ghẹ Phổ Biến</h2>
+            <p>Tại vùng biển Việt Nam, các ngư dân thường đánh bắt được các loại ghẹ chủ lực sau:</p>
+            
+            <div class="grid">
+                <div class="card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Portunus_pelagicus.jpg" alt="Ghẹ Xanh">
+                    <div class="card-body">
+                        <h3>Ghẹ Xanh (Blue Swimmer Crab)</h3>
+                        <p>Vỏ có màu xanh lam đặc trưng, con đực màu xanh đậm đốm trắng, hai càng dài mảnh. Đây là loại ghẹ được ưa chuộng nhất vì thịt rất ngọt và chắc.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Portunus_sanguinolentus_03_by_Line1.jpg" alt="Ghẹ Hoa / Ghẹ Ba Chấm">
+                    <div class="card-body">
+                        <h3>Ghẹ Bông / Ghẹ Hoa (Ghẹ 3 Chấm)</h3>
+                        <p>Thân hình có màu nâu vàng hoặc xám ghồ ghề, đặc trưng với 3 chấm tròn màu đỏ sẫm viền đen rất rõ ở phần cuối mai lưng.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Charybdis_feriata.jpg" alt="Ghẹ Đỏ / Ghẹ Thập Tự">
+                    <div class="card-body">
+                        <h3>Ghẹ Đỏ / Ghẹ Thập Tự</h3>
+                        <p>Toàn thân nổi bật với màu đỏ hồng, trên lưng có các đường sọc màu kem nhạt xếp thành hình chữ thập mang tính biểu tượng. Vỏ dày nhưng thịt rất thơm.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="so-sanh">
+            <h2 class="section-title">3. Bảng So Sánh Đặc Điểm & Giá Trị</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Loại Ghẹ</th>
+                            <th>Độ chắc & Ngọt của thịt</th>
+                            <th>Kích thước trung bình</th>
+                            <th>Giá thành tham khảo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Ghẹ Xanh</strong></td>
+                            <td>⭐⭐⭐⭐⭐ (Thịt chắc, thơm nhất)</td>
+                            <td>150g - 300g / con</td>
+                            <td>Cao nhất (Khoảng 350k - 600k/kg)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ghẹ Bông</strong></td>
+                            <td>⭐⭐⭐⭐ (Thịt nhiều, thơm)</td>
+                            <td>200g - 400g / con</td>
+                            <td>Trung bình - Cao (Khoảng 300k - 450k/kg)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ghẹ Đỏ</strong></td>
+                            <td>⭐⭐⭐ (Thịt ngọt mềm, vỏ dày)</td>
+                            <td>250g - 500g / con (Kích thước lớn)</td>
+                            <td>Bình dân (Khoảng 200k - 350k/kg)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="meo-chon">
+            <h2 class="section-title">4. Bí Quyết Chọn Ghẹ Nhiều Thịt, Nhiều Gạch</h2>
+            <div class="tips-container">
+                <div class="tip-item">
+                    <div class="tip-icon">📅</div>
+                    <div>
+                        <strong>Chọn thời điểm theo lịch âm:</strong> Nên mua ghẹ vào **đầu tháng hoặc cuối tháng âm lịch**. Tránh mua vào giữa tháng vì đây là thời gian ghẹ lột vỏ, thịt sẽ bị bủn, ốp và ít thịt.
+                    </div>
+                </div>
+                <div class="tip-item">
+                    <div class="tip-icon">🦀</div>
+                    <div>
+                        <strong>Phân biệt Ghẹ Thịt và Ghẹ Gạch:</strong> 
+                        <br>- Muốn ăn thịt chắc: Chọn **Ghẹ đực** (có phần yếm nhỏ, hình chữ Y thuôn nhọn).
+                        <br>- Muốn ăn gạch béo: Chọn **Ghẹ cái** (có phần yếm to, tròn, bao trọn phần bụng).
+                    </div>
+                </div>
+                <div class="tip-item">
+                    <div class="tip-icon">💪</div>
+                    <div>
+                        <strong>Kiểm tra độ chắc bằng tay:</strong> Ấn nhẹ vào phần ức ghẹ (phần bụng gần hai bên chân chèo). Nếu thấy cứng, không bị lún tức là ghẹ khỏe, chắc thịt. Nếu thấy mềm hoặc móp xuống thì đó là ghẹ ốp (nhiều nước, ít thịt).
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>© 2026 Cẩm Nang Hải Sản Biển Việt Nam. Phát triển bởi Gemino.</p>
+    </footer>
+
+</body>
+</html>
